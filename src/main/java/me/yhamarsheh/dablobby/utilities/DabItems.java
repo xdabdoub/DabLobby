@@ -8,9 +8,9 @@ import org.bukkit.inventory.ItemStack;
 public enum DabItems {
 
     GAME_SELECTOR(ItemBuilder.from(Material.NETHER_STAR)
-            .name(Component.text("<aqua>Game Selector <gray>(Right Click)"))
-            .lore(Component.text("<gray>Right click to open the Game Selector!"))
-            .build());
+            .name(Component.text(ChatUtils.color("&bGame Selector &7(Right Click)")))
+            .lore(Component.text(ChatUtils.color("&7Right click to open the Game Selector!")))
+            .setNbt("dabitem", "gameselector").build());
 
     private ItemStack itemStack;
     DabItems(ItemStack itemStack) {
