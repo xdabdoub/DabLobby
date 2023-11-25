@@ -77,7 +77,7 @@ public class GameSelector extends LobbyItem {
                     e.setCancelled(true);
                 }));
 
-        gui.setItem(22, ItemBuilder.from(Material.SANDSTONE)
+        gui.setItem(23, ItemBuilder.from(Material.SANDSTONE)
                 .name(Component.text(ChatUtils.color("&bFastbridger")))
                 .lore(Component.text(ChatUtils.color("&7...")),
                         Component.text(ChatUtils.color("&7..")),
@@ -90,7 +90,7 @@ public class GameSelector extends LobbyItem {
                     e.setCancelled(true);
                 }));
 
-        gui.setItem(23, ItemBuilder.from(Material.BARRIER)
+        gui.setItem(24, ItemBuilder.from(Material.BARRIER)
                 .name(Component.text(ChatUtils.color("&cComing Soon")))
                 .lore(Component.text(ChatUtils.color("&7...")),
                         Component.text(ChatUtils.color("&7..")),

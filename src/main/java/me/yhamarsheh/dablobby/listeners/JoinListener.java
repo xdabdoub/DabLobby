@@ -20,6 +20,8 @@ public class JoinListener implements Listener {
     @SuppressWarnings("UnstableApiUsage")
     public void onJoin(PlayerJoinEvent e) {
         Player player = e.getPlayer();
+
+        player.getInventory().clear();
         player.teleport(plugin.lobby);
 
         LobbyItem lobbyItem = plugin.getItemsManager().getGameSelector();

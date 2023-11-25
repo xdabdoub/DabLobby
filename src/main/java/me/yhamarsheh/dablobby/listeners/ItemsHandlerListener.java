@@ -24,14 +24,10 @@ public class ItemsHandlerListener implements Listener {
         Player player = e.getPlayer();
 
         if (item == null) return;
-        player.sendMessage("debug #1");
         if (!isLobbyItem(item)) return;
-        player.sendMessage("debug #2");
         LobbyItem lobbyItem = plugin.getItemsManager().getLobbyItemByName(getNbt(item));
         if (lobbyItem == null) return;
-        player.sendMessage("debug #3");
         if (e.getAction() != lobbyItem.getAction()) return;
-        player.sendMessage("debug #4");
         lobbyItem.onInteraction(e);
     }
 

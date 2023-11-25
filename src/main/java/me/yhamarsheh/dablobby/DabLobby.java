@@ -62,7 +62,7 @@ public class DabLobby extends JavaPlugin {
         float yaw = lobby.getYaw();
         float pitch = lobby.getPitch();
 
-        getConfig().set("lobby", x + ";" + y + ";" + z + ";" + yaw + ";" + pitch);
+        getConfig().set("lobby", world.getName() + ";" + x + ";" + y + ";" + z + ";" + yaw + ";" + pitch);
         saveConfig();
     }
 }

@@ -8,7 +8,12 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.event.weather.WeatherChangeEvent;
+import org.bukkit.inventory.CraftingInventory;
+import org.bukkit.inventory.FurnaceInventory;
+import org.bukkit.inventory.PlayerInventory;
 
 public class QOLListeners implements Listener {
 
@@ -36,5 +41,17 @@ public class QOLListeners implements Listener {
     @EventHandler
     public void onDamage(EntityDamageEvent e) {
         e.setCancelled(true);
+    }
+
+    @EventHandler
+    public void onWeatherChange(WeatherChangeEvent e) {
+        e.setCancelled(true);
+    }
+
+    @EventHandler
+    public void inventoryHandler(InventoryClickEvent e) {
+        if (e.getWhoClicked().hasPermission("dablobby.inventory.bypass")) return;
+        if (e.getClickedInventory() instanceof PlayerInventory || e.getClickedInventory() instanceof CraftingInventory
+        || e.getClickedInventory() instanceof FurnaceInventory) e.setCancelled(true);
     }
 }
