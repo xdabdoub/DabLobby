@@ -1,0 +1,8 @@
+name: DabLobby
+main: me.yhamarsheh.dablobby.DabLobby
+author: xDabDoub
+version: 1.0
+api-version: 1.13
+
+commands:
+  dablobby:
