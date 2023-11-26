@@ -1,32 +1,40 @@
 package me.yhamarsheh.dablobby;
 
+import com.xxmicloxx.NoteBlockAPI.utils.NBSDecoder;
 import me.yhamarsheh.dablobby.commands.DabLobbyCMD;
+import me.yhamarsheh.dablobby.commands.MerryChristmasCMD;
 import me.yhamarsheh.dablobby.listeners.ItemsHandlerListener;
 import me.yhamarsheh.dablobby.listeners.JoinListener;
 import me.yhamarsheh.dablobby.listeners.QOLListeners;
 import me.yhamarsheh.dablobby.managers.ItemsManager;
+import me.yhamarsheh.dablobby.managers.PlayersManager;
+import me.yhamarsheh.dablobby.storage.DataFile;
+import me.yhamarsheh.dablobby.utilities.MusicPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.File;
+import java.net.URISyntaxException;
+import java.net.URL;
+
 public class DabLobby extends JavaPlugin {
 
     private ItemsManager itemsManager;
-
     public Location lobby;
+    private DataFile dataFile;
+    private PlayersManager playersManager;
+    private MusicPlayer musicPlayer;
 
     @Override
     public void onEnable() {
-        itemsManager = new ItemsManager();
-        this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
+        getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
 
+        initAttributes();
         loadLobby();
-
-        new DabLobbyCMD(this);
-        new ItemsHandlerListener(this);
-        new JoinListener(this);
-        new QOLListeners(this);
+        registerCommands();
+        registerListeners();
     }
 
     @Override
@@ -36,6 +44,17 @@ public class DabLobby extends JavaPlugin {
 
     public ItemsManager getItemsManager() {
         return itemsManager;
+    }
+
+    private void registerCommands() {
+        new DabLobbyCMD(this);
+        new MerryChristmasCMD(this);
+    }
+
+    private void registerListeners() {
+        new ItemsHandlerListener(this);
+        new JoinListener(this);
+        new QOLListeners(this);
     }
 
     private void loadLobby() {
@@ -53,6 +72,15 @@ public class DabLobby extends JavaPlugin {
         lobby = new Location(world, x,y,z,yaw,pitch);
     }
 
+    private void initAttributes() {
+        itemsManager = new ItemsManager();
+        dataFile = new DataFile(this);
+        playersManager = new PlayersManager();
+        musicPlayer = new MusicPlayer(this, NBSDecoder.parse(new File(getDataFolder(),
+                "jinglebells.nbs")));
+
+    }
+
     public void saveLobby() {
 
         World world = lobby.getWorld();
@@ -64,5 +92,13 @@ public class DabLobby extends JavaPlugin {
 
         getConfig().set("lobby", world.getName() + ";" + x + ";" + y + ";" + z + ";" + yaw + ";" + pitch);
         saveConfig();
+    }
+
+    public PlayersManager getPlayersManager() {
+        return playersManager;
+    }
+
+    public MusicPlayer getMusicPlayer() {
+        return musicPlayer;
     }
 }
