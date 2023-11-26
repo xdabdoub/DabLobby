@@ -1,6 +1,7 @@
 package me.yhamarsheh.dablobby;
 
 import com.xxmicloxx.NoteBlockAPI.utils.NBSDecoder;
+import me.yhamarsheh.dablobby.commands.AdventCalendarCMD;
 import me.yhamarsheh.dablobby.commands.DabLobbyCMD;
 import me.yhamarsheh.dablobby.commands.MerryChristmasCMD;
 import me.yhamarsheh.dablobby.listeners.ItemsHandlerListener;
@@ -49,6 +50,7 @@ public class DabLobby extends JavaPlugin {
     private void registerCommands() {
         new DabLobbyCMD(this);
         new MerryChristmasCMD(this);
+        new AdventCalendarCMD(this);
     }
 
     private void registerListeners() {
