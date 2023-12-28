@@ -17,8 +17,6 @@ import org.bukkit.World;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
-import java.net.URISyntaxException;
-import java.net.URL;
 
 public class DabLobby extends JavaPlugin {
 

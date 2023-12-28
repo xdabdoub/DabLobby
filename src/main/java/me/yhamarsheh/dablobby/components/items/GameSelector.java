@@ -14,7 +14,6 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 import java.util.HashSet;
-import java.util.Set;
 
 public class GameSelector extends LobbyItem {
 
@@ -64,39 +63,32 @@ public class GameSelector extends LobbyItem {
                     e.setCancelled(true);
                 }));
 
-        gui.setItem(22, ItemBuilder.skull().texture(SMP_SKIN_TEXTURE)
-                .name(Component.text(ChatUtils.color("&bSMP")))
-                .lore(Component.text(ChatUtils.color("&7Uncover the survival world of")),
-                        Component.text(ChatUtils.color("&7Minecraft, wander the wonderful world of")),
-                        Component.text(ChatUtils.color("&7Hybrid Network, and complete difficult quests")),
-                Component.text(ChatUtils.color("&7in order to win rewards!")),
-                        Component.text(ChatUtils.color("&7")),
+        gui.setItem(22, ItemBuilder.from(Material.STONE_SWORD)
+                .name(Component.text(ChatUtils.color("&bIsland Clash &a&lBETA"))) //heart-pounding PvP where bridging, looting, and strategic adaptability reign supreme in a dynamic arena.
+                        .glow()
+                        .lore(Component.text(ChatUtils.color("&7A fast-paced PvP where bridging,")),
+                        Component.text(ChatUtils.color("&7looting, and strategic adaptability reign")),
+                        Component.text(ChatUtils.color("&7supreme in a dynamic arena.")),
+                Component.text(ChatUtils.color("&7")),
                         Component.text(ChatUtils.color("&3Click to play!")))
                 .asGuiItem(e -> {
-                    PlayerUtils.sendToServer(player, "SMP");
+                    PlayerUtils.sendToServer(player, "iclash");
                     e.setCancelled(true);
                 }));
 
         gui.setItem(23, ItemBuilder.from(Material.SANDSTONE)
                 .name(Component.text(ChatUtils.color("&bFastbridger")))
-                .lore(Component.text(ChatUtils.color("&7...")),
-                        Component.text(ChatUtils.color("&7..")),
-                        Component.text(ChatUtils.color("&7...")),
-                        Component.text(ChatUtils.color("&7.")),
+                .lore(Component.text(ChatUtils.color("&7Train your bridging skills, compete against")),
+                        Component.text(ChatUtils.color("&7other players and become the #1 bridger!")),
                         Component.text(ChatUtils.color("&7")),
-                        Component.text(ChatUtils.color("&3Click to play!")))
+                        Component.text(ChatUtils.color("&cIn Development")))
                 .asGuiItem(e -> {
-                    PlayerUtils.sendToServer(player, "Fastbridger");
                     e.setCancelled(true);
                 }));
 
         gui.setItem(24, ItemBuilder.from(Material.BARRIER)
                 .name(Component.text(ChatUtils.color("&cComing Soon")))
                 .lore(Component.text(ChatUtils.color("&7...")),
-                        Component.text(ChatUtils.color("&7..")),
-                        Component.text(ChatUtils.color("&7...")),
-                        Component.text(ChatUtils.color("&7.")),
-                        Component.text(ChatUtils.color("&7")),
                         Component.text(ChatUtils.color("&3&mClick to play!")))
                 .asGuiItem(e -> {
                     gui.close(player);

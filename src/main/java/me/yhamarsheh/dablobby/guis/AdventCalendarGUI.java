@@ -26,12 +26,12 @@ public class AdventCalendarGUI {
 
     private void setupGui() {
         gui.setItem(22, ItemBuilder.skull().texture(PRESENT_SKIN_TEXTURE)
-                .name(Component.text("&cAdvent Calendar Unavailable"))
-                        .lore(Component.text("&7The advent calendar is unavailable until the"),
-                                Component.text("&7warm month of December. Come back for rewards"),
-                                Component.text("&7on the 1st of December!"),
+                .name(Component.text(ChatUtils.color("&cAdvent Calendar Unavailable")))
+                        .lore(Component.text(ChatUtils.color("&7The advent calendar is unavailable until the")),
+                                Component.text(ChatUtils.color("&7warm month of December. Come back for rewards")),
+                                Component.text(ChatUtils.color("&7on the 1st of December!")),
                                 Component.text(ChatUtils.color("&7")),
-                                Component.text(ChatUtils.color("&b" + ChatUtils.dateDifference(new GregorianCalendar(), new GregorianCalendar(2023, Calendar.DECEMBER, 1)) + " left!")))
+                                Component.text(ChatUtils.color("&b" + ChatUtils.dateDifference(new GregorianCalendar(2023, Calendar.DECEMBER, 1), new GregorianCalendar()) + "left!")))
                 .asGuiItem(e -> e.setCancelled(true)));
     }
 
